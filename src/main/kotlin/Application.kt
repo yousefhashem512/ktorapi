@@ -8,6 +8,9 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
+    val database = MongoConnection.getDatabase()
+    println("Database connected: ${database.name}")
+
     configureSerialization()
     configureRouting()
 }

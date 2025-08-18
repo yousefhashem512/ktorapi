@@ -8,7 +8,7 @@ import org.litote.kmongo.reactivestreams.KMongo
 
 
 private val client = KMongo.createClient().coroutine
-private val database = client.getDatabase("RezoneDatabase")
+private val database = client.getDatabase("ReZoAppDB")
 
 private val properties = database.getCollection<Property>()
 
