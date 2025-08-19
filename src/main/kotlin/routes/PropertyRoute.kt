@@ -1,5 +1,6 @@
 package com.yousefh.routes
 
+import com.yousefh.data.RezoneDatabase
 import com.yousefh.data.createOrUpdatePropertyForId
 import com.yousefh.data.deletePropertyForId
 import com.yousefh.data.getPropertyForId
@@ -17,6 +18,13 @@ import io.ktor.server.routing.delete
 import io.ktor.server.routing.post
 
 fun Route.PropertyRoute() {
+
+    post("/addProperty") {
+        val request = call.receive<Property>()
+        RezoneDatabase.properties.insertOne(request)
+        call.respondText("Property inserted successfully")
+    }
+
     route("/get-property") {
         get {
             val propertyId = call.receive<PropertyRequest>().id

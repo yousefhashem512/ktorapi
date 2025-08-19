@@ -7,6 +7,15 @@ import org.litote.kmongo.eq
 import org.litote.kmongo.reactivestreams.KMongo
 
 
+import com.yousefh.database.MongoConnection
+import org.litote.kmongo.coroutine.CoroutineCollection
+
+object RezoneDatabase {
+    private val db = MongoConnection.getDatabase()
+    val properties: CoroutineCollection<Property> = db.getCollection()
+}
+
+
 private val client = KMongo.createClient().coroutine
 private val database = client.getDatabase("ReZoAppDB")
 
